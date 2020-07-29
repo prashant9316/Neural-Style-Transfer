@@ -1,13 +1,13 @@
 # Neural Style Transfer
 
-<h2> Implementing Neural Style Transfer </h2>
-This project uses VGG19 model trained on Imagenet.  
+## Implementing Neural Style Transfer 
+This project uses `VGG19` model trained on Imagenet.  
 We will create one content model, and 3 style models   
 out of intermediate layers of VGG19.  
 You can also create 5 style models.  
 <br>
 #### Layers for Content Model
-For Content Model, block4_conv2 layer would be used.
+For Content Model, `block4_conv2` layer would be used.
 ```
 content_model = model(inputs = vgg.input, outputs = vgg.get_layer('block4_conv2').output)
 ```
@@ -26,7 +26,7 @@ Creating different models:
 style_models = [tf.keras.models.Model(inputs = model.inputs,
 	outputs = model.get_layer(layer).output) for layer in style_layers]
 ```
-### Creating variable to generate image
+### Creating variable for generated image
 ```
 generated = tf.Variable(content, dtype = tf.float32)
 ```
@@ -39,7 +39,7 @@ def content_cost(content, generated):
     cost = tf.reduce_mean(tf.square(a_C - a_G))
     return cost
 ```
-<h3>Function to calculate Style Cose</h3>
+### Function to calculate Style Cost
 This function calculates the cost between the generated image and style image
 ```
 style_model_weights = 1. / len(style_models)
@@ -74,19 +74,20 @@ for i in range(iterations):
         J_content = content_cost(content, generated)
         J_style = content_cost(style, generated)
         J_total = alpha * J_content + beta * J_style
-            
     grads = tape.gradient(J_total, generated)
     optimizer.apply_gradients([(grads, generated)])
 ```
 ## Thank you
 Thanks to Coursera for this awesome course.  
 And thanks to the instructor.  
+
 Also, thanks to the tensorflow community who provided all the solutions to any questions that I had
 ## Improvements
 The limitation of this algorithm is that it cannot create the image in real-time.   
 You have to train the neural network to decrease the cost in order to create the mixed art.   
-But a better method is available, which can be found at this website:[https://github.com/ChengBinJin/Real-time-style-transfer/edit/master/README.md](Real time neural transfer)  
+But a better method is available, which can be found at this website:[https://github.com/ChengBinJin/Real-time-style-transfer/edit/master/README.md](Real-time-neural-transfer)  
+
 ## Implementing it Using Tensorflow JS
 I am currently trying to port it to javascript with tensorflow.js  
 I am new to TFJS, so, if you can help in anyway, then please head over to   
-this repository [https://github.com/prashant9316/Deep-Learning-GUI-beta/tree/nst!](Deep Learning Gui v1.0.1)  
+this repository [https://github.com/prashant9316/Deep-Learning-GUI-beta/tree/nst](Deep-Learning-Gui-v1.0.1)  

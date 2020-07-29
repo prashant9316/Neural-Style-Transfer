@@ -85,9 +85,9 @@ Also, thanks to the tensorflow community who provided all the solutions to any q
 ## Improvements
 The limitation of this algorithm is that it cannot create the image in real-time.   
 You have to train the neural network to decrease the cost in order to create the mixed art.   
-But a better method is available, which can be found at this website:[https://github.com/ChengBinJin/Real-time-style-transfer/edit/master/README.md](Real-time-neural-transfer)  
+But a better method is available, which can be found at this website:[Real-time-neural-transfer](https://github.com/ChengBinJin/Real-time-style-transfer/edit/master/README.md)  
 
 ## Implementing it Using Tensorflow JS
 I am currently trying to port it to javascript with tensorflow.js  
 I am new to TFJS, so, if you can help in anyway, then please head over to   
-this repository [https://github.com/prashant9316/Deep-Learning-GUI-beta/tree/nst](Deep-Learning-Gui-v1.0.1)  
+this repository [Deep-Learning-Gui-v1.0.1](https://github.com/prashant9316/Deep-Learning-GUI-beta/tree/nst)  
